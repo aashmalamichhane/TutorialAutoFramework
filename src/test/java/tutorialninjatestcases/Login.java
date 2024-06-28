@@ -12,10 +12,16 @@ import utils.Utilities;
 public class Login extends Base {
 
     WebDriver driver ;
+
+    public Login()
+    {
+        super();  //It will call parent class constructor-
+    }
+
     @BeforeMethod
     public void setUp()
     {
-        driver = initBrowserApplication("chrome");
+        driver = initBrowserApplication(prop.getProperty("browser"));
         driver.findElement(By.xpath("//span[normalize-space()='My Account']")).click();
         driver.findElement(By.linkText("Login")).click();
     }
@@ -27,10 +33,10 @@ public class Login extends Base {
     }
 
     @Test(priority = 1)
-    public  void verifyLoginwithValidCredentials(){
-
-        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("aashma.info@gmail.com");
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123");
+    public  void verifyLoginwithValidCredentials()
+    {
+        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(prop.getProperty("validEmail"));
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(prop.getProperty("validPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         Assert.assertTrue(driver.findElement(By.linkText("Change your password")).isDisplayed());
     }
@@ -38,7 +44,6 @@ public class Login extends Base {
     @Test(priority = 2)
     public void verifyLoginwithInvalidCredentials()
     {
-
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(Utilities.generateEmailTimeStamp() );
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123");
         driver.findElement(By.xpath("//input[@value='Login']")).click();
@@ -51,8 +56,7 @@ public class Login extends Base {
     @Test(priority = 3)
     public void verifyLoginwithvalidEmailandInvalidCredentials()
     {
-
-        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("aashma.info@gmail.com");
+        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(prop.getProperty("validEmail"));
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123ee");
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
@@ -64,9 +68,8 @@ public class Login extends Base {
     @Test(priority = 4)
     public void verifyLoginwithInvalidEmailandValidCredentials()
     {
-
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(Utilities.generateEmailTimeStamp());
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123ee");
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(prop.getProperty("validPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
         String expWarningmsg ="Warning: No match for E-Mail Address and/or Password.";

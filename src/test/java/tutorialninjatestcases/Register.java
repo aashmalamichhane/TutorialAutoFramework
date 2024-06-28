@@ -14,11 +14,10 @@ public class Register extends Base {
 
      @BeforeMethod
     public void setUp(){
-         driver = initBrowserApplication("chrome");
+         driver = initBrowserApplication(prop.getProperty("browser"));
          driver.findElement(By.xpath("//span[normalize-space()='My Account']")).click();
          driver.findElement(By.linkText("Register")).click();
     }
-
 
     @AfterMethod
     public void tearDown(){
@@ -32,8 +31,8 @@ public class Register extends Base {
         driver.findElement(By.xpath("//input[@id='input-lastname']")).sendKeys("lamichhane");
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(Utilities.generateEmailTimeStamp());
         driver.findElement(By.xpath("//input[@id='input-telephone']")).sendKeys("9879879877");
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123");
-        driver.findElement(By.xpath("//input[@id='input-confirm']")).sendKeys("Test@123");
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(prop.getProperty("validPassword"));
+        driver.findElement(By.xpath("//input[@id='input-confirm']")).sendKeys(prop.getProperty("validPassword"));
         driver.findElement(By.xpath("//input[@name=\"agree\"]")).click();
         driver.findElement(By.xpath("//input[@value='Continue']")).click();
         String actSuccessMessage = driver.findElement(By.xpath("//div[@id=\"content\"]//h1")).getText();
@@ -41,15 +40,15 @@ public class Register extends Base {
         Assert.assertEquals(actSuccessMessage, expSuccessMesage, "Registration is not completed");
     }
 
-    @Test
+    @Test(priority = 2)
     public void verifyRegisterWithExistingEmail() {
 
         driver.findElement(By.xpath("//input[@id='input-firstname']")).sendKeys("Aashma");
         driver.findElement(By.xpath("//input[@id='input-lastname']")).sendKeys("lamichhane");
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("aashma.info@gmail.com");
         driver.findElement(By.xpath("//input[@id='input-telephone']")).sendKeys("9879879877");
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123");
-        driver.findElement(By.xpath("//input[@id='input-confirm']")).sendKeys("Test@123");
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(prop.getProperty("validPassword"));
+        driver.findElement(By.xpath("//input[@id='input-confirm']")).sendKeys(prop.getProperty("validPassword"));
         driver.findElement(By.xpath("//input[@name=\"agree\"]")).click();
         driver.findElement(By.xpath("//input[@value='Continue']")).click();
         String actErrorMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-dismissible')]")).getText();
