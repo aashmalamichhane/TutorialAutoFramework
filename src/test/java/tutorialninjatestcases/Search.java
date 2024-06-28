@@ -27,12 +27,11 @@ public class Search extends Base {
         driver.quit();
     }
 
-
     @Test(priority = 1)
     public void verifySearchwithValidProduct()
         {
            WebElement searchBox=  driver.findElement(By.xpath("//input[@placeholder=\"Search\"]"));
-           searchBox.sendKeys("iphone");
+           searchBox.sendKeys(testDataProp.getProperty("validProduct"));
            searchBox.sendKeys(Keys.ENTER);
             Assert.assertTrue(driver.findElement(By.linkText("iPhone")).isDisplayed());
         }
@@ -41,10 +40,10 @@ public class Search extends Base {
     public  void verifyInvalidProduct()
     {
         WebElement searchBox=  driver.findElement(By.xpath("//input[@placeholder=\"Search\"]"));
-        searchBox.sendKeys("iphondddde");
+        searchBox.sendKeys(testDataProp.getProperty("invalidProduct"));
         searchBox.sendKeys(Keys.ENTER);
         String productNotAvailableMsg = driver.findElement(By.xpath("//div[@id='content']//p[2]")).getText();
-        Assert.assertTrue(productNotAvailableMsg.contains("There is no product that matches the search criteria."));
+        Assert.assertTrue(productNotAvailableMsg.contains(testDataProp.getProperty("noProductMessage")));
     }
 
     }

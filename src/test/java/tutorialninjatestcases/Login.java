@@ -45,7 +45,7 @@ public class Login extends Base {
     public void verifyLoginwithInvalidCredentials()
     {
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(Utilities.generateEmailTimeStamp() );
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123");
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(testDataProp.getProperty("invalidPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
 
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
@@ -54,25 +54,25 @@ public class Login extends Base {
     }
 
     @Test(priority = 3)
-    public void verifyLoginwithvalidEmailandInvalidCredentials()
+    public void verifyLoginwithvalidEmailandInvalidPass()
     {
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(prop.getProperty("validEmail"));
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Test@123ee");
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(testDataProp.getProperty("invalidPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-        String expWarningmsg ="Warning: No match for E-Mail Address and/or Password.";
+        String expWarningmsg = testDataProp.getProperty("invalidCredentialWarningMessage");
         Assert.assertEquals(actWarningmsg,expWarningmsg, "Expected message is not as actual message");
 
     }
 
     @Test(priority = 4)
-    public void verifyLoginwithInvalidEmailandValidCredentials()
+    public void verifyLoginwithInvalidEmailandValidPass()
     {
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(Utilities.generateEmailTimeStamp());
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(prop.getProperty("validPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-        String expWarningmsg ="Warning: No match for E-Mail Address and/or Password.";
+        String expWarningmsg =testDataProp.getProperty("invalidCredentialWarningMessage");
         Assert.assertEquals(actWarningmsg,expWarningmsg, "Expected message is not as actual message");
     }
 
@@ -83,10 +83,8 @@ public class Login extends Base {
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("");
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-        String expWarningmsg ="Warning: No match for E-Mail Address and/or Password.";
+        String expWarningmsg =testDataProp.getProperty("invalidCredentialWarningMessage");
         Assert.assertEquals(actWarningmsg,expWarningmsg, "Expected message is not as actual message");
     }
-
-
 
 }

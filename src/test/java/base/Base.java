@@ -15,15 +15,26 @@ import java.util.Properties;
 public class Base {
     WebDriver driver ;
     public  Properties prop;
+    public Properties testDataProp;
 
     public  Base() {
         String currentPath = System.getProperty("user.dir");
         prop = new Properties();
+        testDataProp = new Properties();
+
+        try {
+            FileReader testDataFile = new FileReader(currentPath + "\\src\\test\\java\\testdata\\test_data.properties");
+            testDataProp.load(testDataFile);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             FileReader conFile = new FileReader(currentPath + "\\src\\test\\java\\config\\config.properties");
             prop.load(conFile);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

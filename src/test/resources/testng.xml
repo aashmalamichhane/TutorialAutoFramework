@@ -15,8 +15,8 @@
                 <methods>
                     <include name="verifyLoginwithValidCredentials"/>
                     <include name="verifyLoginwithInvalidCredentials"/>
-                    <include name="verifyLoginwithvalidEmailandInvalidCredentials"/>
-                    <include name="verifyLoginwithInvalidEmailandValidCredentials"/>
+                    <include name="verifyLoginwithvalidEmailandInvalidPass"/>
+                    <include name="verifyLoginwithInvalidEmailandValidPass"/>
                     <include name="verifyLoginwithNullData"/>
                 </methods>
             </class>
