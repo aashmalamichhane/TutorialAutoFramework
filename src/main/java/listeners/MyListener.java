@@ -55,16 +55,19 @@ public class MyListener implements ITestListener {
         WebDriver driver = null;
 
         try {
-            driver = (WebDriver)result.getTestClass().getRealClass().getDeclaredField("driver").get(result.getInstance());
-        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+        }
+        catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
             e.printStackTrace();
         }
 
-        String destinationScreenshotPath = Utilities.captureScreenshot(driver,result.getName());
+        if (driver != null) {
 
-        extentTest.addScreenCaptureFromPath(destinationScreenshotPath);
-        extentTest.log(Status.INFO,result.getThrowable());
-        extentTest.log(Status.FAIL,result.getName()+" got failed");
+            String destinationScreenshotPath = Utilities.captureScreenshot(driver, result.getName());
+            extentTest.addScreenCaptureFromPath(destinationScreenshotPath);
+        }
+        extentTest.log(Status.INFO, result.getThrowable());
+        extentTest.log(Status.FAIL, result.getName() + " got failed");
     }
 
     @Override
