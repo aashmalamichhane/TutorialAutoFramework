@@ -60,8 +60,6 @@ public class Base {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.Implicit_Wait_time));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Utilities.Page_Load_time));
         driver.get(prop.getProperty("url"));
-        driver.findElement(By.xpath("//span[normalize-space()='My Account']")).click();
-        driver.findElement(By.linkText("Register")).click();
 
         return driver;
     }

@@ -1,15 +1,17 @@
 package pageObjects;
 
-import base.Base;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends Base {
+public class HomePage  {
     WebDriver driver;
 
-   public WebElement myAccountButton = driver.findElement(By.xpath("//span[normalize-space()='My Account']"));
-   public WebElement loginMenu = driver.findElement(By.linkText("Login"));
+    @FindBy(xpath= "//span[normalize-space()='My Account']")
+    public WebElement myAccountButton;
+
+    @FindBy(linkText= "Login")
+    public WebElement loginMenu;
 
    public HomePage(WebDriver driver)
 

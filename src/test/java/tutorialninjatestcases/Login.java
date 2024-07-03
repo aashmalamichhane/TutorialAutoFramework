@@ -24,7 +24,6 @@ public class Login extends Base {
     @BeforeMethod
     public void setUp() {
         driver = initBrowserApplication(prop.getProperty("browser"));
-
 //        HomePage homePage = new HomePage(driver);
 //        homePage.myAccountButton.click();
 //        homePage.loginMenu.click();
@@ -62,7 +61,7 @@ public class Login extends Base {
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(testDataProp.getProperty("invalidPassword"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-        String expWarningmsg = testDataProp.getProperty("invalidCredentialWarningMessage");
+        String expWarningmsg = testDataProp.getProperty("icnvalidCredentialWarningMessage");
         Assert.assertEquals(actWarningmsg, expWarningmsg, "Expected message is not as actual message");
 
     }

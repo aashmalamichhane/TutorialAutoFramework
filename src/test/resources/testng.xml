@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Tutorial Suite">
-    <test verbose="2" preserve-order="true" name="All testcases">
+    <listeners>
+        <listener class-name="listeners.MyListener"> </listener>
+    </listeners>
+    <test name="All testcases">
         <classes>
 
             <class name="tutorialninjatestcases.Register">
