@@ -1,6 +1,5 @@
 package base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -23,7 +22,7 @@ public class Base {
         testDataProp = new Properties();
 
         try {
-            FileReader testDataFile = new FileReader(currentPath + "\\src\\test\\java\\testdata\\test_data.properties");
+            FileReader testDataFile = new FileReader(currentPath + "\\src\\main\\java\\testdata\\test_data.properties");
             testDataProp.load(testDataFile);
         }
         catch (Exception e) {
@@ -31,7 +30,7 @@ public class Base {
         }
 
         try {
-            FileReader conFile = new FileReader(currentPath + "\\src\\test\\java\\config\\config.properties");
+            FileReader conFile = new FileReader(currentPath + "\\src\\main\\java\\config\\config.properties");
             prop.load(conFile);
         }
         catch (Exception e) {

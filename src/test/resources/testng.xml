@@ -7,14 +7,14 @@
     <test name="All testcases">
         <classes>
 
-            <class name="tutorialninjatestcases.Register">
+            <class name="testcases.Register">
                 <methods>
                     <include name="verifyRegisterWithMandatoryFileds"/>
                     <include name="verifyRegisterWithExistingEmail"/>
                     <include name="verifyRegisterWithNullData"/>
                 </methods>
             </class>
-            <class name="tutorialninjatestcases.Login">
+            <class name="testcases.Login">
                 <methods>
                     <include name="verifyLoginwithValidCredentials"/>
                     <include name="verifyLoginwithInvalidCredentials"/>
@@ -23,7 +23,7 @@
                     <include name="verifyLoginwithNullData"/>
                 </methods>
             </class>
-            <class name="tutorialninjatestcases.Search">
+            <class name="testcases.Search">
                 <methods>
                     <include name="verifySearchwithValidProduct"/>
                     <include name="verifyInvalidProduct"/>

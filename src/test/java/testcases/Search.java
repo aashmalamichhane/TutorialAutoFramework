@@ -1,4 +1,4 @@
-package tutorialninjatestcases;
+package testcases;
 
 import base.Base;
 import org.openqa.selenium.By;
