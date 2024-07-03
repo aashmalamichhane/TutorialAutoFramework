@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class Base {
-    WebDriver driver ;
+    public WebDriver driver ;
     public  Properties prop;
     public Properties testDataProp;
 
