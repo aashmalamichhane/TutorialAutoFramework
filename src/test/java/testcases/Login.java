@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pageObjects.HomePage;
 import utils.Utilities;
 
 import java.io.IOException;
@@ -23,11 +24,9 @@ public class Login extends Base {
     @BeforeMethod
     public void setUp() {
         driver = initBrowserApplication(prop.getProperty("browser"));
-//        HomePage homePage = new HomePage(driver);
-//        homePage.myAccountButton.click();
-//        homePage.loginMenu.click();
-        driver.findElement(By.xpath("//span[normalize-space()='My Account']")).click();
-        driver.findElement(By.linkText("Login")).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.getMyAccountButton().click();
+        homePage.getLoginMenu().click();
     }
 
     @AfterMethod

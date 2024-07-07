@@ -1,23 +1,23 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class HomePage  {
     WebDriver driver;
 
-    @FindBy(xpath= "//span[normalize-space()='My Account']")
-    public WebElement myAccountButton;
+    public HomePage(WebDriver driver)
 
-    @FindBy(linkText= "Login")
-    public WebElement loginMenu;
+    {
+        this.driver = driver;
+    }
 
-   public HomePage(WebDriver driver)
+    public WebElement getMyAccountButton(){
+        return driver.findElement(By.xpath("//span[normalize-space()='My Account']"));
+    }
 
-   {
-       this.driver = driver;
-   }
-
-
+    public WebElement getLoginMenu(){
+        return driver.findElement(By.linkText("Login"));
+    }
 }
