@@ -12,8 +12,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.ExtentReporter;
 import utils.Utilities;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -77,7 +75,6 @@ public class MyListener implements ITestListener {
         extentTest.log(Status.SKIP, testName+ " got skipped");
         System.out.println(testName + " test is skipped");
         System.out.println(result.getThrowable());
-
 
     }
 
