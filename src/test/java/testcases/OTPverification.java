@@ -11,21 +11,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 import java.time.Duration;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 
 public class OTPverification {
 
              public String getOTP() throws IOException, MailosaurException {
-                // Available in the API tab of a server
+
+                long testStart = System.currentTimeMillis();
                 String apiKey = "EA2gy6eVTQe1ow9FUbn8hG0ZuGryqx8t";
                 String serverId = "ryy9gtfm";
                 String serverDomain = "ryy9gtfm.mailosaur.net";
 
                 MailosaurClient mailosaur = new MailosaurClient(apiKey);
                 MessageSearchParams params = new MessageSearchParams();
-                params.withServer(serverId);
+                params.withServer(serverId).withReceivedAfter(testStart);
+
                 SearchCriteria criteria = new SearchCriteria();
                 criteria.withSentTo("asdas@" + serverDomain);
 
