@@ -41,8 +41,6 @@ public class Base {
 
     public WebDriver initBrowserApplication(String browserName)
     {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
 
         if(browserName.equalsIgnoreCase("chrome"))
         {
