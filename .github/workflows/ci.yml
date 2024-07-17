@@ -18,5 +18,5 @@ jobs:
           distribution: 'adopt'
       - name: Build and test
         run: |
-          mvn install -DskipTests
-          mvn test -Dtestng=testng.xml
+          mvn clean install -DskipTests
+          mvn test -DsuiteXmlFile=testng.xml
