@@ -41,8 +41,6 @@ jobs:
       - name: Run tests
         run: mvn test
 
-      - name: Run tests with TestNG
-        run: mvn test -Dtestng=testng.xml
 
 
 
