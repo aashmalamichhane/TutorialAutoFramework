@@ -80,7 +80,7 @@ public class Login extends Base {
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("");
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         String actWarningmsg = driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-        String expWarningmsg = testDataProp.getProperty("invalidCredentialWarningMessage");
+        String expWarningmsg = testDataProp.getProperty("ddinvalidCredentialWarningMessage");
         Assert.assertEquals(actWarningmsg, expWarningmsg, "Expected message is not as actual message");
     }
 
