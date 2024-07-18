@@ -15,7 +15,7 @@ public class Register extends Base {
      @BeforeMethod
     public void setUp(){
          driver = initBrowserApplication(prop.getProperty("browser"));
-         driver.findElement(By.xpath("//span[normalize-space()='My Account']")).click();
+         driver.findElement(By.xpath("//a[@title=\"My Account\"]")).click();
          driver.findElement(By.linkText("Register")).click();
     }
 
