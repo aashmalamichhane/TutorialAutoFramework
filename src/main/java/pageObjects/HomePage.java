@@ -14,7 +14,7 @@ public class HomePage  {
     }
 
     public WebElement getMyAccountButton(){
-        return driver.findElement(By.xpath("//span[normalize-space()='My Account']"));
+        return driver.findElement(By.xpath("//a[@title=\"My Account\"]"));
     }
 
     public WebElement getLoginMenu(){
