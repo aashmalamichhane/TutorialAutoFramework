@@ -41,11 +41,12 @@ jobs:
       - name: Run tests
         run: mvn test
 
-      - name: Upload Test Report
+      - name: Upload Extent Report
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-            name: test-report
-            path: target/surefire-reports
+            name: extent-report
+            path: target/test-output/ExtentReports/extentReport.html
 
 
 
