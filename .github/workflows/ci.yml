@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: extent-report
-            path: target/test-output/ExtentReports/extentReport.html
+            path: test-output/ExtentReports/extentReport.html
 
 
 
